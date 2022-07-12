@@ -1,0 +1,102 @@
+
+{
+    "id": "62c9e38ef936ee58a85badc2",
+    "aaId": "62c9e38bce5a604dbfb5d704",
+    "activityBlocked": false,
+    "avatarHash": "d3923977bb812931fe455823f2bf58f7",
+    "avatarUrl": "https://trello-members.s3.amazonaws.com/62c9e38ef936ee58a85badc2/d3923977bb812931fe455823f2bf58f7",
+    "bio": "",
+    "bioData": null,
+    "confirmed": true,
+    "fullName": "saeed",
+    "idEnterprise": null,
+    "idEnterprisesDeactivated": [],
+    "idMemberReferrer": null,
+    "idPremOrgsAdmin": [],
+    "initials": "S",
+    "memberType": "normal",
+    "nonPublic": {},
+    "nonPublicAvailable": true,
+    "products": [],
+    "url": "https://trello.com/mangadrawer100",
+    "username": "mangadrawer100",
+    "status": "disconnected",
+    "aaBlockSyncUntil": null,
+    "aaEmail": null,
+    "aaEnrolledDate": null,
+    "avatarSource": "none",
+    "credentialsRemovedCount": 0,
+    "domainClaimed": null,
+    "email": "manga.drawer100@gmail.com",
+    "goldSunsetFreeTrialIdOrganization": null,
+    "gravatarHash": "2b5a32e4167afe9578ecbea8bc8f55d9",
+    "idBoards": [
+        "62cb31e06667bd643c3cf928"
+    ],
+    "idOrganizations": [
+        "62c9e3a7b82f8b5d81a439fd"
+    ],
+    "idEnterprisesAdmin": [],
+    "limits": {
+        "boards": {
+            "totalPerMember": {
+                "status": "ok",
+                "disableAt": 4500,
+                "warnAt": 3600
+            }
+        },
+        "orgs": {
+            "totalPerMember": {
+                "status": "ok",
+                "disableAt": 850,
+                "warnAt": 680
+            }
+        }
+    },
+    "loginTypes": [
+        "atlassian"
+    ],
+    "marketingOptIn": {
+        "optedIn": true,
+        "date": "2022-07-10T10:06:58.552Z"
+    },
+    "messagesDismissed": [],
+    "oneTimeMessagesDismissed": [
+        "sent-possible-new-signup-event",
+        "62c9e3a7b82f8b5d81a439fd-memberHomeScreenPromptFull",
+        "close-menu-of-first-board"
+    ],
+    "prefs": {
+        "privacy": {
+            "fullName": "public",
+            "avatar": "public"
+        },
+        "sendSummaries": true,
+        "minutesBetweenSummaries": 60,
+        "minutesBeforeDeadlineToNotify": 1440,
+        "colorBlind": false,
+        "locale": "en-US"
+    },
+    "trophies": [],
+    "uploadedAvatarHash": null,
+    "uploadedAvatarUrl": null,
+    "premiumFeatures": [
+        "additionalBoardBackgrounds",
+        "additionalStickers",
+        "customBoardBackgrounds",
+        "customEmoji",
+        "customStickers",
+        "plugins"
+    ],
+    "isAaMastered": true,
+    "ixUpdate": "24",
+    "boards": [
+        {
+            "id": "62cb31e06667bd643c3cf928",
+            "name": "test1",
+            "closed": false,
+            "idOrganization": "62c9e3a7b82f8b5d81a439fd",
+            "pinned": false
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+GET /api/v1/Authors
+
+TC1: Confirm that response is 200 OK
+
+TC2: Objects inside response contain, id, idBook, firstName, lastName
+
+TC3: Confirm that response time is less than 150 ms
+
+-------------------------------------------------------------------
+
+GET /api/v1/Authors/{id}
+
+TC4: Confirm that with valid (int) id the response is 200 OK 
+
+TC5: Objects inside response contain, id, idBook, firstName, lastName
+
+TC6: Confirm that with invalid (not int) id the response is 400 Bad Request
+
+TC7: Confirm that response time is less than 250 ms
+
+-------------------------------------------------------------------
+
+PUT /api/v1/Authors/{id}
+
+TC8: Confirm that response is 200 OK
+
+TC9: Objects inside response contain, id, idBook, firstName, lastName
+
+TC10: Confirm that response time is less than 280 ms

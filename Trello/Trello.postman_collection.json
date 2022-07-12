@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "1fbc59c5-0d03-4c7c-a5de-0c134125f92a",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18422788"
+	},
+	"item": [
+		{
+			"name": "Create a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"confirm default values of closed is false\", function () {\r",
+							"    pm.expect(jsonData.closed).to.eql(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if id exist \", function() {\r",
+							"pm.expect(jsonData.id).not.eq(undefined);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"confirm default values of name is correct\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"test1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/boards/?name=test1&key=85f2de0685d7f309831d5bcbeb88b23d&token=4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test1"
+						},
+						{
+							"key": "key",
+							"value": "85f2de0685d7f309831d5bcbeb88b23d"
+						},
+						{
+							"key": "token",
+							"value": "4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test('Number of boards = ' + jsonData.idBoards.length +\" is more than 1\", function () {\r",
+							"    pm.expect(jsonData.idBoards.length).to.above(1);\r",
+							"});\r",
+							"\r",
+							"pm.globals.set(\"FirstBoardID\",jsonData.idBoards[0] );\r",
+							"pm.globals.set(\"LastBoardID\",jsonData.idBoards[jsonData.idBoards.length-1] );\r",
+							"\r",
+							"pm.globals.set(\"BoardIDToDelet\",jsonData.idBoards[1] );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/members/me?boards=open&key=85f2de0685d7f309831d5bcbeb88b23d&token=4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"members",
+						"me"
+					],
+					"query": [
+						{
+							"key": "boards",
+							"value": "open"
+						},
+						{
+							"key": "key",
+							"value": "85f2de0685d7f309831d5bcbeb88b23d"
+						},
+						{
+							"key": "token",
+							"value": "4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delet Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/boards/{{BoardIDToDelet}}/?key=85f2de0685d7f309831d5bcbeb88b23d&token=4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{BoardIDToDelet}}",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "85f2de0685d7f309831d5bcbeb88b23d"
+						},
+						{
+							"key": "token",
+							"value": "4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a List on a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"confirm default values of closed is false\", function () {\r",
+							"    pm.expect(jsonData.closed).to.eql(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"confirm default values of closed is limits\", function () {\r",
+							"    pm.expect(jsonData.limits).to.eql({});\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if id exist \", function() {\r",
+							"pm.expect(jsonData.id).not.eq(undefined);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if idBoard exist \", function() {\r",
+							"pm.expect(jsonData.idBoard).not.eq(undefined);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if name exist \", function() {\r",
+							"pm.expect(jsonData.name).not.eq(undefined);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"confirm default values of name is correct\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"test1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/boards/{{FirstBoardID}}/lists?name=test1&key=85f2de0685d7f309831d5bcbeb88b23d&token=4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{FirstBoardID}}",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test1"
+						},
+						{
+							"key": "key",
+							"value": "85f2de0685d7f309831d5bcbeb88b23d"
+						},
+						{
+							"key": "token",
+							"value": "4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Lists on a Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response has 3 items\", function(){\r",
+							"  pm.expect(jsonData.length).to.equal(3);\r",
+							"});\r",
+							"\r",
+							"pm.globals.set(\"FirstListID\",jsonData[0].id );\r",
+							"pm.globals.set(\"LastListID\",jsonData[jsonData.length-1].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/boards/{{LastBoardID}}/lists?key=85f2de0685d7f309831d5bcbeb88b23d&token=4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{LastBoardID}}",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "85f2de0685d7f309831d5bcbeb88b23d"
+						},
+						{
+							"key": "token",
+							"value": "4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive or unarchive a list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Dose header contains isEnterpriseAdmin%3Dfalse\", function () {\r",
+							"    pm.expect(pm.response.headers.get('Set-Cookie')).to.contain(\"isEnterpriseAdmin%3Dfalse\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Check response contain same parapeter value\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect (pm.globals.get('value')).to.contain(jsonData.closed);\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/1/lists/{{FirstListID}}/closed?key=85f2de0685d7f309831d5bcbeb88b23d&token=4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765&value={{value}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{FirstListID}}",
+						"closed"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "85f2de0685d7f309831d5bcbeb88b23d"
+						},
+						{
+							"key": "token",
+							"value": "4d9b7c827b459d3be5379a884bbaa02bbb530b9b3278192e9ebb0e9ea24fd765"
+						},
+						{
+							"key": "value",
+							"value": "{{value}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "https://api.trello.com"
+		},
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "field",
+			"value": "test1"
+		}
+	]
+}
