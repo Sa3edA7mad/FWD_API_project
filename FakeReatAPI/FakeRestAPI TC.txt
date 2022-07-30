@@ -1,29 +1,47 @@
 GET /api/v1/Authors
 
-TC1: Confirm that response is 200 OK
+TC: Make sure the response is "200 OK"
 
-TC2: Objects inside response contain, id, idBook, firstName, lastName
-
-TC3: Confirm that response time is less than 150 ms
+TC: Objects inside response contain, id, idBook, firstName, lastName
 
 -------------------------------------------------------------------
 
-GET /api/v1/Authors/{id}
+POST /api/v1/Authors.
 
-TC4: Confirm that with valid (int) id the response is 200 OK 
+TC: Register a new valid Author successfully and response code "201 Created".
 
-TC5: Objects inside response contain, id, idBook, firstName, lastName
+TC: firstname & lastname should be mandatory
 
-TC6: Confirm that with invalid (not int) id the response is 400 Bad Request
+-------------------------------------------------------------------
 
-TC7: Confirm that response time is less than 250 ms
+GET /api/v1/Authors/authors/books/{idBook}
+
+TC: Author's data is updated successfully
 
 -------------------------------------------------------------------
 
 PUT /api/v1/Authors/{id}
 
-TC8: Confirm that response is 200 OK
+TC: Author's data is updated successfully.
 
-TC9: Objects inside response contain, id, idBook, firstName, lastName
+-------------------------------------------------------------------
 
-TC10: Confirm that response time is less than 280 ms
+GET /api/v1/Authors/{id}
+
+TC: Confirm that with valid (int) id the response is 200 OK 
+
+TC: Objects inside response contain, id, idBook, firstName, lastName
+
+TC: Confirm that with invalid (not int) id the response is 400 Bad Request
+
+TC: Confirm that response time is less than 250 ms
+
+-------------------------------------------------------------------
+
+PUT /api/v1/Authors/{id}
+
+TC: Confirm that response is 200 OK
+
+TC: Objects inside response contain, id, idBook, firstName, lastName
+
+TC: Confirm that response time is less than 280 ms
